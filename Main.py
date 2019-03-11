@@ -3,7 +3,7 @@ import Constants
 import Changelog
 import Utility
 
-Changelog.print_changes("v1.2")
+Changelog.print_changes("v1.3")
 
 # Initialize the pygame module.
 pygame.init()
@@ -30,6 +30,7 @@ def image_conversions():
     Constants.PLAY_BUTTON_IMAGE = Constants.PLAY_BUTTON_IMAGE.convert_alpha()
     Constants.QUIT_BUTTON_IMAGE = Constants.QUIT_BUTTON_IMAGE.convert_alpha()
     Constants.PLAYER_ANIMATION_IMAGE = Constants.PLAYER_ANIMATION_IMAGE.convert_alpha()
+    Constants.COMBO_IMAGE = Constants.COMBO_IMAGE.convert_alpha()
 
 
 image_conversions()

@@ -30,7 +30,7 @@ class GlobalStore:
         # All the levels.
         self.levels = []
 
-        self.levels.append(Level.Level([Ball.Ball(1, [2, 1], None, (255, 200, 25), [100, 400])],
+        self.levels.append(Level.Level([Ball.Ball(3, [2, 1], None, (255, 200, 25), [100, 400])],
                                        Player.Player(650), 780, 1000, (50, 50, 0)))
 
         self.levels.append(Level.Level([Ball.Ball(2, [2, 1], None, (0, 255, 255), [100, 300])],

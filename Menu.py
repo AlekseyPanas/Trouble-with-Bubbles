@@ -9,7 +9,7 @@ class Menu:
         self.GLOBE = globe
         self.balls = [Ball.Ball(random.randint(1, 4), [random.randint(-20, 20), random.randint(-3, 0)],
                            None, (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)),
-                           [random.randint(100, 900), random.randint(100, 200)]) for num in range(5)]
+                           [random.randint(100, 900), random.randint(100, 500)]) for num in range(7)]
 
         # Button class instances for menu
         self.play_button = Button.Button((500, 430), (450, 150), Constants.PLAY_BUTTON_IMAGE)

@@ -42,6 +42,10 @@ class Level:
         # The background of a level.
         self.background = background
 
+        # Stores all popups and popups that need removing
+        self.popups = []
+        self.remove_popups = []
+
     def draw(self, screen):
         if not self.drawn:
             Utility.draw_sidebar(screen)
@@ -88,6 +92,10 @@ class Level:
         pygame.draw.rect(screen, (0, 0, 255), pygame.Rect((0, Constants.SCREEN_SIZE[1]),
                                                             (Constants.SCREEN_SIZE[0] * (self.countdown / self.timer), 20)))
 
+        # Draws each popup
+        for popup in self.popups:
+            popup.draw(screen)
+
         # Freezes the level at start.
         if self.sleep_time > 0:
             # Draws "Get Ready" image.
@@ -110,18 +118,34 @@ class Level:
 
     def update(self, screen):
         # Removes balls that are queued for deletion and adds scores respectively
-        for ball in self.remove_balls:
+        for idx, ball in enumerate(self.remove_balls):
             if ball in self.balls:
                 # Adding score
-                if ball.combo:
-                    Constants.GLOBE.score += 100 * (ball.size + 1)
+                # Checks if its a combo based on the combo boolean. also ensures that only one of the 2 combo-ed balls
+                # is iterated using the combo_Detect variable.
+                if ball.combo and not (self.remove_balls[idx - 1].combo_detect if idx > 0 else ball.combo_detect):
+                    # Adds a popup
+                    self.popups.append(Utility.Popup(80, Constants.COMBO_IMAGE,
+                                                     ((ball.pos[0] - 45) +
+                                                      ((self.remove_balls[idx + 1].pos[0] - ball.pos[0]) / 2), ball.pos[1])))
+
+                    Constants.GLOBE.score += 200 * (ball.size + 1)
+                    # If a combo ball is detected, combo detect is set to true so that the 2nd ball that belongs to the
+                    # same combo doesn't trigger this code
+                    ball.combo_detect = True
                 else:
                     Constants.GLOBE.score += 50
                 # Deleting Ball
                 self.balls.remove(ball)
-                # Drawing sidebar
-                Utility.draw_sidebar(screen)
         self.remove_balls = []
+        # Drawing sidebar
+        Utility.draw_sidebar(screen)
+
+        # Removes popups
+        for popup in self.remove_popups:
+            if popup in self.popups:
+                self.popups.remove(popup)
+        self.remove_popups = []
 
         # Updates player.
         self.player.update()

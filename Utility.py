@@ -78,3 +78,6 @@ class Popup:
 
     def draw(self, screen):
         screen.blit(self.image, self.pos)
+        if self.lifetime <= 0:
+            Constants.GLOBE.levels[Constants.GLOBE.currentLevel].remove_popups.append(self)
+        self.lifetime -= 1

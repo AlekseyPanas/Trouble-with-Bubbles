@@ -30,6 +30,9 @@ class Player:
         self.interval = 0
         self.count = 0
 
+        # A boolean which stores whether the player is moon walking. This is a bug but will be turned into an easter egg
+        self.is_moonwalking = False
+
     def draw(self, screen):
         # Draws an outline box to test ball collision
         # Uncomment for debug
@@ -53,6 +56,14 @@ class Player:
         self.interval += 1
         if self.interval % 7 == 0:
             self.count += 1
+
+        if len(self.stack.get()):
+            if (self.direction == "right" and self.stack.get()[-1] < 0) or (self.direction == "left" and self.stack.get()[-1] > 0):
+                self.is_moonwalking = True
+            else:
+                self.is_moonwalking = False
+
+        print(self.is_moonwalking)
 
     def event_handler(self, event):
         # Manages events for movement and shooting.

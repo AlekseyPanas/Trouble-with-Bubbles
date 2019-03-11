@@ -21,6 +21,7 @@ MENU_TITLE_IMAGE = pygame.image.load("assets/images/menuTitle.png")
 PLAY_BUTTON_IMAGE = pygame.image.load("assets/images/play_button.png")
 QUIT_BUTTON_IMAGE = pygame.image.load("assets/images/quit_button.png")
 PLAYER_ANIMATION_IMAGE = pygame.image.load("assets/images/player_animation.png")
+COMBO_IMAGE = pygame.transform.scale(pygame.image.load("assets/images/combo.png"), (90, 40))
 
 # Fonts.
 IMPACT_FONT = pygame.font.SysFont("Impact", 45)

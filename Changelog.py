@@ -25,6 +25,7 @@ def print_changes(version):
         print("- Added player animation")
     elif version == "v1.3":
         print("- Score is now added for combos and for popping balls")
+        print("- A combo popup appears when a combo is performed")
 
 def get_versions_in_order():
     return ["ALPHA v1.0", "BETA v1.1", "v1.2", "v1.3"]
@@ -36,6 +37,5 @@ def print_future_updates():
     print("- Add lowering ceiling")
     print("- Add arrays to specify custom ball split height and side speed")
     print("- Add powerups")
-    print("- Add score for combos and ball popping")
     print("- Add accounts and leader boards")
     print("- Add achievements")

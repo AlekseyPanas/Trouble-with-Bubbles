@@ -27,6 +27,8 @@ class Ball:
             self.height = 0
         # If the ball hits spikes, it is a combo and will be treated differently
         self.combo = False
+        # Used to pair 2 balls that combo-ed against the spikes while deleting the balls
+        self.combo_detect = False
 
     def draw(self, screen):
         # Draws a circle at the position of the given size and color.
