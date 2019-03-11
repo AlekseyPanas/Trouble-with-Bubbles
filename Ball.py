@@ -25,6 +25,8 @@ class Ball:
         # Ensures that the height never goes over 0.
         if self.height > 0:
             self.height = 0
+        # If the ball hits spikes, it is a combo and will be treated differently
+        self.combo = False
 
     def draw(self, screen):
         # Draws a circle at the position of the given size and color.
@@ -54,6 +56,8 @@ class Ball:
         # Hitting the spikes.
         elif self.pos[1] - self.radius <= Constants.SPIKE_HEIGHT:
             Constants.GLOBE.levels[Constants.GLOBE.currentLevel].remove_balls.append(self)
+            # Sets combo to true
+            self.combo = True
 
     def split(self):
         # Formula for split height:  (-8 / ((self.size * 0.75) + 1)) * 1.3      .4,   1.6

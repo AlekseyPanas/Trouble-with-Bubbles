@@ -69,3 +69,12 @@ def sprite_sheet_handler(image, length, size, frames):
     return frames_list
 
 
+# This class allows a certain image to appear on screen for a period of time
+class Popup:
+    def __init__(self, lifetime, image, pos):
+        self.image = image
+        self.lifetime = lifetime
+        self.pos = pos
+
+    def draw(self, screen):
+        screen.blit(self.image, self.pos)

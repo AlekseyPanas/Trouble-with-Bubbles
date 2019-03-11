@@ -108,11 +108,19 @@ class Level:
             self.score_animation(screen)
             Constants.MENU.start_game(Constants.GLOBE.currentLevel + 1)
 
-    def update(self):
-        # Removes balls that are queued for deletion.
+    def update(self, screen):
+        # Removes balls that are queued for deletion and adds scores respectively
         for ball in self.remove_balls:
             if ball in self.balls:
+                # Adding score
+                if ball.combo:
+                    Constants.GLOBE.score += 100 * (ball.size + 1)
+                else:
+                    Constants.GLOBE.score += 50
+                # Deleting Ball
                 self.balls.remove(ball)
+                # Drawing sidebar
+                Utility.draw_sidebar(screen)
         self.remove_balls = []
 
         # Updates player.

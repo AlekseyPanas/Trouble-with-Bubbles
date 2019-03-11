@@ -53,7 +53,7 @@ while Constants.running:
             screen.blit(Constants.GLOBE.levels[Constants.GLOBE.currentLevel].background, (0, 0))
 
         Constants.GLOBE.levels[Constants.GLOBE.currentLevel].draw(screen)
-        Constants.GLOBE.levels[Constants.GLOBE.currentLevel].update()
+        Constants.GLOBE.levels[Constants.GLOBE.currentLevel].update(screen)
 
         # Updates display
         pygame.display.update(pygame.Rect((0, 0), (Constants.SCREEN_SIZE[0], Constants.SCREEN_SIZE[1] + 20)))
