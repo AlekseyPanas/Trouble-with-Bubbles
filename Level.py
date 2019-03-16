@@ -101,7 +101,8 @@ class Level:
             # Draws "Get Ready" image.
             screen.blit(Constants.GET_READY_IMAGE, (550, 300))
             # Updates display to show visuals.
-            pygame.display.update(pygame.Rect((0, 0), (Constants.SCREEN_SIZE[0], Constants.SCREEN_SIZE[1] + 20)))
+            #visual.blit(screen, (0, 0))
+            pygame.display.update()
             time.sleep(self.sleep_time)
             self.sleep_time = 0
             # Clears event queue to prevent any key presses made during time.sleep from doing anything.

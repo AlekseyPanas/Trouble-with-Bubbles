@@ -1,6 +1,7 @@
 import pygame
 import Global
 import Menu
+import Button
 
 pygame.init()
 # All constants, including image imports, will happen here.
@@ -22,6 +23,8 @@ PLAY_BUTTON_IMAGE = pygame.image.load("assets/images/play_button.png")
 QUIT_BUTTON_IMAGE = pygame.image.load("assets/images/quit_button.png")
 PLAYER_ANIMATION_IMAGE = pygame.image.load("assets/images/player_animation.png")
 COMBO_IMAGE = pygame.transform.scale(pygame.image.load("assets/images/combo.png"), (90, 40))
+EXIT_BUTTON_IMAGE = pygame.transform.scale(pygame.image.load("assets/images/exit button.png"), (300, 200))
+PAUSE_IMAGE = pygame.image.load("assets/images/pause background.png")
 
 # Fonts.
 IMPACT_FONT = pygame.font.SysFont("Impact", 45)
@@ -53,6 +56,9 @@ GRAVITY = 0.105
 # Classes
 GLOBE = Global.GlobalStore()
 MENU = Menu.Menu(GLOBE)
+
+# A button thats used during pause menu
+EXIT_BUTTON = Button.Button((550, 300), (300, 100), EXIT_BUTTON_IMAGE)
 
 # Determines when the program stops
 running = True

@@ -26,6 +26,8 @@ def print_changes(version):
     elif version == "v1.3":
         print("- Score is now added for combos and for popping balls")
         print("- A combo popup appears when a combo is performed")
+        print("- Added a pause menu")
+
 
 def get_versions_in_order():
     return ["ALPHA v1.0", "BETA v1.1", "v1.2", "v1.3"]

@@ -23,6 +23,9 @@ class GlobalStore:
         self.currentLevel = 0
         # List containing all levels.
         self.levels = []
+        
+        # Is the game paused
+        self.paused = False
 
         self.define_levels()
 

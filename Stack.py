@@ -11,3 +11,6 @@ class Stack:
 
     def get(self):
         return self.stack
+
+    def clear(self):
+        self.stack = []
