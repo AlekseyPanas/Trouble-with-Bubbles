@@ -3,7 +3,7 @@ import pygame
 
 
 class Ball:
-    def __init__(self, size, vel, height, color, pos):
+    def __init__(self, size, vel, height, color, pos, custom_vel=[], custom_height=[]):
         # The size of the ball (Not size of image).
         # If size is 1, ball won't be split but will pop.
         self.size = size
@@ -29,6 +29,9 @@ class Ball:
         self.combo = False
         # Used to pair 2 balls that combo-ed against the spikes while deleting the balls
         self.combo_detect = False
+        # An optional parameter to specify custom bounce height velocity for balls when they split.
+        self.custom_vel = custom_vel
+        self.custom_height = custom_height
 
     def draw(self, screen):
         # Draws a circle at the position of the given size and color.
@@ -63,5 +66,11 @@ class Ball:
 
     def split(self):
         # Formula for split height:  (-8 / ((self.size * 0.75) + 1)) * 1.3      .4,   1.6
-        return [Ball(self.size - 1, [-self.velocity[0], (-8 / ((self.size * 0.5) + 1.2)) * 1.4], self.height - Constants.BOUNCE_HEIGHT_MULT, self.color, self.pos[:]),
-                Ball(self.size - 1, [+self.velocity[0], (-8 / ((self.size * 0.5) + 1.2)) * 1.4], self.height - Constants.BOUNCE_HEIGHT_MULT, self.color, self.pos[:])]
+        return [Ball(self.size - 1, [-self.velocity[0] if len(self.custom_vel) == 0 else -self.custom_vel[0],
+                                     (-8 / ((self.size * 0.5) + 1.2)) * 1.4],
+                     self.height - Constants.BOUNCE_HEIGHT_MULT if len(self.custom_height) == 0 else self.custom_height[0],
+                     self.color, self.pos[:], self.custom_vel[1:], self.custom_height[1:]),
+                Ball(self.size - 1, [+self.velocity[0] if len(self.custom_vel) == 0 else self.custom_vel[0],
+                                     (-8 / ((self.size * 0.5) + 1.2)) * 1.4],
+                     self.height - Constants.BOUNCE_HEIGHT_MULT if len(self.custom_height) == 0 else self.custom_height[0],
+                     self.color, self.pos[:], self.custom_vel[1:], self.custom_height[1:])]

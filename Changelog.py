@@ -27,6 +27,7 @@ def print_changes(version):
         print("- Score is now added for combos and for popping balls")
         print("- A combo popup appears when a combo is performed")
         print("- Added a pause menu")
+        print("- Added ability to customize bounce height and velocity for split balls")
 
 
 def get_versions_in_order():
@@ -37,7 +38,5 @@ def print_future_updates():
     print("- Add ball flags which will be passed down to each ball")
     print("- Add walls")
     print("- Add lowering ceiling")
-    print("- Add arrays to specify custom ball split height and side speed")
     print("- Add powerups")
     print("- Add accounts and leader boards")
-    print("- Add achievements")
