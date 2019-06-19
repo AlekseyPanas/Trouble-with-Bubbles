@@ -127,8 +127,8 @@ class Level:
                 if ball.combo and not (self.remove_balls[idx - 1].combo_detect if idx > 0 else ball.combo_detect):
                     # Adds a popup
                     self.popups.append(Utility.Popup(80, Constants.COMBO_IMAGE,
-                                                     ((ball.pos[0] - 45) +
-                                                      ((self.remove_balls[idx + 1].pos[0] - ball.pos[0]) / 2), ball.pos[1])))
+                                                     ((ball.pos[0] - 45) + (0 if len(self.remove_balls) == 1 else (
+                                                      self.remove_balls[idx + 1].pos[0] - ball.pos[0]) / 2), ball.pos[1])))
 
                     Constants.GLOBE.score += 200 * (ball.size + 1)
                     # If a combo ball is detected, combo detect is set to true so that the 2nd ball that belongs to the

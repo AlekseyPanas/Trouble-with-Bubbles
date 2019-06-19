@@ -52,7 +52,7 @@ class Player:
         else:
             screen.blit(self.player_left, self.draw_position) if self.direction == "left" else screen.blit(self.player_right, self.draw_position)
 
-        # 7 is the duration between each frame
+        # 7 is the duration between each frame of the animation
         self.interval += 1
         if self.interval % 7 == 0:
             self.count += 1
